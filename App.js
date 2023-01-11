@@ -1,20 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
+
+import Dropdown from "./src/components/dropdown/Dropdown";
 
 export default function App() {
+  const list = [
+    {
+      label: "test",
+      value: "test",
+    },
+  ];
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <View style={{ justifyContent: "center", alignItems: "center" }}>
       <StatusBar style="auto" />
+      <Dropdown list={list} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

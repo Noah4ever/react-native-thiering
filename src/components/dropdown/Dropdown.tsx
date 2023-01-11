@@ -8,11 +8,13 @@ export interface SidebarItem {
 
 export default function Dropdown({
   list,
+  defaultValue,
   onChange,
   placeholder = "Search...",
   placeholderTextColor = "#777777",
 }: {
   list: [SidebarItem],
+  defaultValue?: string,
   onChange?: Function,
   placeholder?: string;
   placeholderTextColor?: string;
