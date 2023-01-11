@@ -1,3 +1,4 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 
@@ -11,8 +12,13 @@ export default function App() {
     },
   ];
   return (
-    <View style={{ justifyContent: "center", alignItems: "center" }}>
-      <StatusBar style="auto" />
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        height: 600,
+      }}>
+      <StatusBar style="dark" />
       <Dropdown list={list} />
     </View>
   );
