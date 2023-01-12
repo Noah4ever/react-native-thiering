@@ -19,7 +19,7 @@ export default function Dropdown({
   placeholderTextColor = "#888",
   iconLeft = <Icon name="search-outline" size={18} color={"#888"} />,
   iconRightClose = <Icon name="close-outline" size={18} color={"#888"} />,
-  iconRight = <Icon name="chevron-down" size={18} color={"#888"} />
+  iconRight = <Icon name="chevron-down" size={18} color={"#888"} />,
 }: {
   list: [SidebarItem];
   defaultValue?: string;
@@ -33,39 +33,53 @@ export default function Dropdown({
   iconLeft?: any;
   iconRight?: any;
 }) {
-
-  const [dropdownVisible, setDropdowVisible] = useState(open)
+  const [dropdownVisible, setDropdowVisible] = useState(open);
   function toggleDropdown() {
-    setDropdowVisible(!dropdownVisible)
+    setDropdowVisible(!dropdownVisible);
   }
 
   return (
     <View>
-      <View style={[{
-        width: 200,
-      }, containerStyle]}>
-        <View style={[{
-          borderWidth: 1,
-          borderColor: "#555",
-          borderRadius: 8,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingVertical: 2,
-          paddingHorizontal: 4,
-        }, searchBarStyle]}>
-          <View style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            flex: 1,
-          }}>
+      <View
+        style={[
+          {
+            width: 200,
+          },
+          containerStyle,
+        ]}
+      >
+        <View
+          style={[
+            {
+              borderWidth: 1,
+              borderColor: "#555",
+              borderRadius: 8,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              paddingVertical: 2,
+              paddingHorizontal: 4,
+            },
+            searchBarStyle,
+          ]}
+        >
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              flex: 1,
+            }}
+          >
             {iconLeft}
             <TextInput
-              style={[{
-                marginLeft: 5
-              }, textInputStyle]}
+              style={[
+                {
+                  marginLeft: 5,
+                },
+                textInputStyle,
+              ]}
               cursorColor={"#555"}
               placeholder={placeholder}
               placeholderTextColor={placeholderTextColor}
@@ -76,6 +90,7 @@ export default function Dropdown({
           </TouchableOpacity>
         </View>
       </View>
+
       <View style={{ position: "absolute" }}>
         {dropdownVisible ? <Text>Open</Text> : ""}
       </View>
