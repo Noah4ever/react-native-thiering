@@ -10,13 +10,18 @@ export default function App() {
       label: "test",
       value: "test",
     },
+    {
+      label: "test2",
+      value: "test2",
+    },
   ];
   return (
     <View
       style={{
         justifyContent: "center",
         alignItems: "center",
-        height: 600,
+        backgroundColor: "#23272A",
+        height: 891,
       }}>
       <StatusBar style="dark" />
       <Dropdown list={list} />
