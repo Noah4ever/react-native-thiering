@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 
@@ -7,14 +7,26 @@ import Dropdown from "./src/components/dropdown/Dropdown";
 export default function App() {
   const list = [
     {
-      label: "test",
-      value: "test",
+      label: "Leg raises",
+      value: "leg raises",
     },
     {
-      label: "test2",
-      value: "test2",
+      label: "Pullups",
+      value: "pullups",
+    },
+    {
+      label: "Pushups",
+      value: "pushups",
     },
   ];
+
+  const [selected, setSelected] = useState("pullups");
+
+  function updateSelected(item) {
+    console.log("updateSelected: ", item);
+    setSelected(item);
+  }
+
   return (
     <View
       style={{
@@ -24,7 +36,7 @@ export default function App() {
         height: 891,
       }}>
       <StatusBar style="dark" />
-      <Dropdown list={list} />
+      <Dropdown list={list} defaultValue={selected} onChange={updateSelected} />
     </View>
   );
 }

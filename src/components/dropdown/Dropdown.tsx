@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,8 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackBase,
+  FlatList,
+  StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -33,7 +35,7 @@ export default function Dropdown({
   placeholder = "Search...",
   placeholderTextColor = "#888",
   iconLeft = <Icon name="search-outline" size={18} color={"#888"} />,
-  iconRightClose = <Icon name="close-outline" size={18} color={"#888"} />,
+  iconRightClose = <Icon name="chevron-up" size={18} color={"#888"} />,
   iconRight = <Icon name="chevron-down" size={18} color={"#888"} />,
 }: {
   list: DropdownItem[];
@@ -54,18 +56,22 @@ export default function Dropdown({
   function toggleDropdown() {
     setDropdowVisible(!dropdownVisible);
   }
-  const [selected, setSelected] = useState(defaultValue);
+  const selected = useRef<DropdownItem>({
+    label: list.find((i) => i.value === defaultValue)?.label ?? "", // find label with defaultValue in list
+    value: defaultValue ?? "",
+  });
   const textInput = useRef<TextInput>(null);
   const [displayList, setDisplayList] = useState(list);
 
   // Default behavior when use clicks on item in dropdown
   function selectItemDefault(item: DropdownItem) {
+    if (onChange) {
+      onChange(item);
+    }
     // set selected state to new selected value
-    setSelected(item.value);
-
+    selected.current = item;
     // Set text of searchbar to selected value
-    textInput.current?.setNativeProps({ text: item.value });
-
+    textInput.current?.setNativeProps({ text: item.label });
     // Toggle dropdown
     toggleDropdown();
   }
@@ -75,20 +81,17 @@ export default function Dropdown({
     if (onChangeText) {
       onChangeText(text);
     }
-
     // If dropdown is not visible:
     if (!dropdownVisible) {
       // open dropdown
       setDropdowVisible(true);
     }
-
     // If searchbar text is empty:
     if (text === "") {
       // show full list
       setDisplayList(list);
       return;
     }
-
     // Filter display list on searchbar text input
     setDisplayList(() => {
       // filter on whole list
@@ -99,6 +102,7 @@ export default function Dropdown({
       });
     });
   }
+
   return (
     <View>
       <View
@@ -109,23 +113,9 @@ export default function Dropdown({
           containerStyle,
         ]}>
         <TouchableOpacity
+          activeOpacity={0.8}
           onPress={toggleDropdown}
-          style={[
-            {
-              borderWidth: 1,
-              borderColor: "#555",
-              borderRadius: 8,
-              backgroundColor: "white",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingVertical: 5,
-              paddingHorizontal: 8,
-              elevation: 4,
-            },
-            searchBarStyle,
-          ]}>
+          style={[styles.searchBarContainerDefault, searchBarStyle]}>
           <View
             style={{
               display: "flex",
@@ -142,13 +132,8 @@ export default function Dropdown({
               {iconLeft}
               <TextInput
                 ref={textInput}
-                defaultValue={defaultValue}
-                style={[
-                  {
-                    marginLeft: 5,
-                  },
-                  textInputStyle,
-                ]}
+                defaultValue={selected.current.label ?? ""}
+                style={[styles.searchBarInputDefault, textInputStyle]}
                 cursorColor={"#555"}
                 placeholder={placeholder}
                 placeholderTextColor={placeholderTextColor}
@@ -158,7 +143,8 @@ export default function Dropdown({
             <TouchableOpacity
               onPress={() => {
                 textInput.current?.blur();
-                textInput.current?.setNativeProps({ text: selected });
+                // textInput.current?.setNativeProps({ text: selected });
+                setDisplayList(list);
                 toggleDropdown();
               }}>
               {dropdownVisible ? iconRightClose : iconRight}
@@ -168,43 +154,33 @@ export default function Dropdown({
       </View>
       <View style={{ position: "relative" }}>
         {dropdownVisible ? (
-          <View
-            style={{
-              borderWidth: 1,
-              borderColor: "#555",
-              borderRadius: 8,
-              backgroundColor: "white",
-              position: "absolute",
-              width: "100%",
-              marginTop: 3,
-              paddingVertical: 5,
-              paddingHorizontal: 8,
-              elevation: 4,
-            }}>
+          <View style={[styles.dropdownContainerDefault]}>
             {displayList.length > 0 ? (
-              displayList.map((item) => {
-                return (
-                  <TouchableOpacity
+              <FlatList
+                data={displayList}
+                renderItem={({ item }) => (
+                  <TouchableHighlight
+                    underlayColor={"#e1e1e1"}
                     key={item.value}
-                    style={{
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                    }}
+                    style={[
+                      styles.dropdownItemDefault,
+                      {
+                        backgroundColor:
+                          item.value === selected.current.value
+                            ? "#e1e1e1"
+                            : "white",
+                      },
+                    ]}
                     onPress={() => {
                       selectItemDefault(item);
                     }}>
                     <Text>{item.label}</Text>
-                  </TouchableOpacity>
-                );
-              })
+                  </TouchableHighlight>
+                )}
+                keyExtractor={(item) => item.value}
+              />
             ) : (
-              <Text
-                style={{
-                  paddingHorizontal: 10,
-                  paddingVertical: 5,
-                }}>
-                Nothing found
-              </Text>
+              <Text style={[styles.dropdownItemDefault]}>Nothing found</Text>
             )}
           </View>
         ) : (
@@ -214,3 +190,38 @@ export default function Dropdown({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  searchBarContainerDefault: {
+    borderWidth: 1,
+    borderColor: "#555",
+    borderRadius: 8,
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    elevation: 4,
+  },
+  searchBarInputDefault: {
+    marginLeft: 5,
+  },
+  dropdownContainerDefault: {
+    borderWidth: 1,
+    borderColor: "#555",
+    borderRadius: 8,
+    backgroundColor: "white",
+    position: "absolute",
+    width: "100%",
+    maxHeight: 200,
+    marginTop: 3,
+    paddingVertical: 5,
+    elevation: 4,
+  },
+  dropdownItemDefault: {
+    paddingHorizontal: 13,
+    paddingVertical: 5,
+  },
+});
