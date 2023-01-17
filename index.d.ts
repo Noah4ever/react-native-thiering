@@ -14,6 +14,8 @@ export interface DropdownProps {
   containerStyle?: any;
   searchBarStyle?: any;
   textInputStyle?: any;
+  dropdownStyle?: any;
+  dropdownItemStyle?: any;
   placeholder?: string;
   placeholderTextColor?: string;
   iconLeft?: any;

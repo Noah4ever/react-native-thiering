@@ -15,6 +15,7 @@ import { DropdownProps, DropdownItem } from "../../";
  * Clean up code
  * Use StyleSheet instead of inline
  * no default elevation
+ * on textinput submit: search for text value in displaylist and change selected
  */
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -26,6 +27,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   containerStyle,
   searchBarStyle,
   textInputStyle,
+  dropdownStyle,
+  dropdownItemStyle,
   placeholder = "Search...",
   placeholderTextColor = "#888",
   iconLeft = <Icon name="search-outline" size={18} color={"#888"} />,
@@ -137,7 +140,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
       <View style={{ position: "relative" }}>
         {dropdownVisible ? (
-          <View style={[styles.dropdownContainerDefault]}>
+          <View style={[styles.dropdownContainerDefault, dropdownStyle]}>
             {displayList?.length > 0 ? (
               <FlatList
                 data={displayList}
@@ -153,6 +156,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                             ? "#e1e1e1"
                             : "white",
                       },
+                      dropdownItemStyle,
                     ]}
                     onPress={() => {
                       selectItemDefault(item);
@@ -196,6 +200,7 @@ const styles = StyleSheet.create({
   },
 
   dropdownContainerDefault: {
+    zIndex: 1001,
     borderWidth: 1,
     borderColor: "#555",
     borderRadius: 8,
