@@ -13,8 +13,6 @@ import { DropdownProps, DropdownItem } from "../../";
 
 /**
  * Clean up code
- * Use StyleSheet instead of inline
- * no default elevation
  * on textinput submit: search for text value in displaylist and change selected
  */
 
@@ -39,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   function toggleDropdown() {
     setDropdowVisible(!dropdownVisible);
   }
-  //console.log("Test");
+
   const selected = useRef<DropdownItem>({
     label: list?.find((i) => i.value === defaultValue)?.label ?? "", // find label with defaultValue in list
     value: defaultValue ?? "",
@@ -128,7 +126,6 @@ const Dropdown: React.FC<DropdownProps> = ({
             <TouchableOpacity
               onPress={() => {
                 textInput.current?.blur();
-                // textInput.current?.setNativeProps({ text: selected });
                 setDisplayList(list);
                 toggleDropdown();
               }}>
@@ -192,7 +189,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 5,
     paddingHorizontal: 8,
-    elevation: 4,
   },
 
   searchBarInputDefault: {
