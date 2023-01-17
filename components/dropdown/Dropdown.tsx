@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { DropdownProps, DropdownItem } from "../../..";
+import { DropdownProps, DropdownItem } from "../../";
 
 /**
  * Clean up code
