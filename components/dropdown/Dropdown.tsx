@@ -14,11 +14,11 @@ import { DropdownProps, DropdownItem } from "../../";
 /**
  * Clean up code
  * Use StyleSheet instead of inline
- *
+ * no default elevation
  */
 
 const Dropdown: React.FC<DropdownProps> = ({
-  list,
+  list = [],
   defaultValue,
   open = false,
   onChange,
@@ -138,7 +138,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       <View style={{ position: "relative" }}>
         {dropdownVisible ? (
           <View style={[styles.dropdownContainerDefault]}>
-            {displayList.length > 0 ? (
+            {displayList?.length > 0 ? (
               <FlatList
                 data={displayList}
                 renderItem={({ item }) => (
