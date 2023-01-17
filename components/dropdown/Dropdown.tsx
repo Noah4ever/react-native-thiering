@@ -36,8 +36,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   function toggleDropdown() {
     setDropdowVisible(!dropdownVisible);
   }
+  //console.log("Test");
   const selected = useRef<DropdownItem>({
-    label: list.find((i) => i.value === defaultValue)?.label ?? "", // find label with defaultValue in list
+    label: list?.find((i) => i.value === defaultValue)?.label ?? "", // find label with defaultValue in list
     value: defaultValue ?? "",
   });
   const textInput = useRef<TextInput>(null);
