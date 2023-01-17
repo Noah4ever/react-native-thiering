@@ -42,9 +42,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     label: list?.find((i) => i.value === defaultValue)?.label ?? "", // find label with defaultValue in list
     value: defaultValue ?? "",
   });
-  if (defaultValue) {
-    onChange(selected);
-  }
+
   const textInput = useRef<TextInput>(null);
   const [displayList, setDisplayList] = useState(list);
 
