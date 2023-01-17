@@ -1,12 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   TextInput,
   TouchableHighlight,
-  TouchableWithoutFeedback,
-  TouchableWithoutFeedbackBase,
   FlatList,
   StyleSheet,
 } from "react-native";
@@ -111,25 +109,30 @@ export default function Dropdown({
             width: 200,
           },
           containerStyle,
-        ]}>
+        ]}
+      >
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={toggleDropdown}
-          style={[styles.searchBarContainerDefault, searchBarStyle]}>
+          style={[styles.searchBarContainerDefault, searchBarStyle]}
+        >
           <View
             style={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-            }}>
+            }}
+          >
             <View
               style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 flex: 1,
-              }}>
+              }}
+            >
               {iconLeft}
+
               <TextInput
                 ref={textInput}
                 defaultValue={selected.current.label ?? ""}
@@ -146,12 +149,14 @@ export default function Dropdown({
                 // textInput.current?.setNativeProps({ text: selected });
                 setDisplayList(list);
                 toggleDropdown();
-              }}>
+              }}
+            >
               {dropdownVisible ? iconRightClose : iconRight}
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
       </View>
+
       <View style={{ position: "relative" }}>
         {dropdownVisible ? (
           <View style={[styles.dropdownContainerDefault]}>
@@ -173,7 +178,8 @@ export default function Dropdown({
                     ]}
                     onPress={() => {
                       selectItemDefault(item);
-                    }}>
+                    }}
+                  >
                     <Text>{item.label}</Text>
                   </TouchableHighlight>
                 )}
@@ -205,9 +211,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     elevation: 4,
   },
+
   searchBarInputDefault: {
     marginLeft: 5,
   },
+
   dropdownContainerDefault: {
     borderWidth: 1,
     borderColor: "#555",
@@ -220,6 +228,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     elevation: 4,
   },
+
   dropdownItemDefault: {
     paddingHorizontal: 13,
     paddingVertical: 5,
