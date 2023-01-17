@@ -9,11 +9,7 @@ import {
   StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-
-export interface DropdownItem {
-  label: string;
-  value: string;
-}
+import { DropdownProps, DropdownItem } from "../../..";
 
 /**
  * Clean up code
@@ -21,7 +17,7 @@ export interface DropdownItem {
  *
  */
 
-export default function Dropdown({
+const Dropdown: React.FC<DropdownProps> = ({
   list,
   defaultValue,
   open = false,
@@ -35,21 +31,7 @@ export default function Dropdown({
   iconLeft = <Icon name="search-outline" size={18} color={"#888"} />,
   iconRightClose = <Icon name="chevron-up" size={18} color={"#888"} />,
   iconRight = <Icon name="chevron-down" size={18} color={"#888"} />,
-}: {
-  list: DropdownItem[];
-  defaultValue?: string;
-  open?: boolean;
-  onChange?: any;
-  onChangeText?: any;
-  containerStyle?: any;
-  searchBarStyle?: any;
-  textInputStyle?: any;
-  placeholder?: string;
-  placeholderTextColor?: string;
-  iconLeft?: any;
-  iconRightClose?: any;
-  iconRight?: any;
-}) {
+}) => {
   const [dropdownVisible, setDropdowVisible] = useState(open);
   function toggleDropdown() {
     setDropdowVisible(!dropdownVisible);
@@ -109,28 +91,24 @@ export default function Dropdown({
             width: 200,
           },
           containerStyle,
-        ]}
-      >
+        ]}>
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={toggleDropdown}
-          style={[styles.searchBarContainerDefault, searchBarStyle]}
-        >
+          style={[styles.searchBarContainerDefault, searchBarStyle]}>
           <View
             style={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-            }}
-          >
+            }}>
             <View
               style={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 flex: 1,
-              }}
-            >
+              }}>
               {iconLeft}
 
               <TextInput
@@ -149,8 +127,7 @@ export default function Dropdown({
                 // textInput.current?.setNativeProps({ text: selected });
                 setDisplayList(list);
                 toggleDropdown();
-              }}
-            >
+              }}>
               {dropdownVisible ? iconRightClose : iconRight}
             </TouchableOpacity>
           </View>
@@ -178,8 +155,7 @@ export default function Dropdown({
                     ]}
                     onPress={() => {
                       selectItemDefault(item);
-                    }}
-                  >
+                    }}>
                     <Text>{item.label}</Text>
                   </TouchableHighlight>
                 )}
@@ -195,7 +171,9 @@ export default function Dropdown({
       </View>
     </View>
   );
-}
+};
+
+export default Dropdown;
 
 const styles = StyleSheet.create({
   searchBarContainerDefault: {
