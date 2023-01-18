@@ -1,5 +1,6 @@
 
 <h1 align="center"> 📦 React Native Thiering 📦</h1>
+<p align="center">Bundle of useful and beautiful customizable components</p>
 
 # 👉🏻 Dropdown
 - [🔍 Preview](#-preview)
