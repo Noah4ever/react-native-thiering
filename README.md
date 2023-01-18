@@ -27,6 +27,52 @@ npm i react-native-thiering
 ```
 ## ✍ Usage
 ### 💻 Code
+Let's build the preview!
+#### Import the Dropdown:
+```javascript
+import { Dropdown } from "react-native-thiering";
+```
+#### Initialize state for selected item:
+```javascript
+const [selected, setSelected] = useState({
+    label: "Germany",
+    value: "germany",
+});
+```
+#### Initialize list for dropdown:
+```javascript
+const list = [
+  {
+    label: "Germany",
+    value: "germany",
+  },
+  {
+    label: "Italy",
+    value: "italy",
+  },
+  {
+    label: "France",
+    value: "france",
+  },
+];
+```
+#### Use Dropdown element:
+```javascript
+<Dropdown
+  list={list}
+/>
+```
+#### Make it your dropdown:
+```javascript
+ <Dropdown
+   list={list}
+   defaultValue={selected.value}
+   onChange={setSelected}
+   placeholder="Select country"
+   containerStyle={{ width: 300 }}
+ />
+```
+### Here is the full code for the preview:
 ```javascript
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
