@@ -22,16 +22,16 @@ const Dropdown: React.FC<DropdownProps> = ({
   open = false,
   onChange,
   onChangeText,
-  containerStyle,
-  searchBarStyle,
-  textInputStyle,
-  dropdownStyle,
-  dropdownItemStyle,
   placeholder = "Search...",
   placeholderTextColor = "#888",
   iconLeft = <Icon name="search-outline" size={18} color={"#888"} />,
   iconRightClose = <Icon name="chevron-up" size={18} color={"#888"} />,
   iconRight = <Icon name="chevron-down" size={18} color={"#888"} />,
+  containerStyle,
+  searchBarStyle,
+  textInputStyle,
+  dropdownStyle,
+  dropdownItemStyle,
 }) => {
   const [dropdownVisible, setDropdowVisible] = useState(open);
   function toggleDropdown() {

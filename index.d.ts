@@ -12,16 +12,16 @@ export interface DropdownProps {
   open?: boolean;
   onChange?: (item: DropdownItem) => void;
   onChangeText?: (text: string) => void;
-  containerStyle?: ViewStyle;
-  searchBarStyle?: ViewStyle;
-  textInputStyle?: TextStyle;
-  dropdownStyle?: ViewStyle;
-  dropdownItemStyle?: ViewStyle;
   placeholder?: string;
   placeholderTextColor?: string;
   iconLeft?: JSX.Element;
   iconRightClose?: JSX.Element;
   iconRight?: JSX.Element;
+  containerStyle?: ViewStyle;
+  searchBarStyle?: ViewStyle;
+  textInputStyle?: TextStyle;
+  dropdownStyle?: ViewStyle;
+  dropdownItemStyle?: ViewStyle;
 }
 
 declare class Dropdown extends React.Component<DropdownProps> {}
