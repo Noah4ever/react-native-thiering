@@ -2,7 +2,13 @@
 <h1 align="center"> 📦 React Native Thiering 📦</h1>
 
 # 👉🏻 Dropdown
-
+- [🔍 Preview](#-preview)
+- [💾 Installation](#-installation)
+- [✍ Usage](#-usage)
+  * [💻 Code](#-code)
+  * [📋 Types](#-types)
+  * [🎯 Properties](#-properties)
+  * [🪄 Style](#-style)
 ## 🔍 Preview
 |   |   | 
 |---|---|
@@ -13,7 +19,8 @@
 ```sh
 npm i react-native-thiering
 ```
-## ⚒️ How to use 
+## ✍ Usage
+### 💻 Code
 ```javascript
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
@@ -67,12 +74,12 @@ const styles = StyleSheet.create({
 
 ```
 
-## 📋 Types
+### 📋 Types
 | Name | Value | Description |
 |---|---|---|
 | DropdownItem | `{label: string; value: string;}` | Dropdown item type |
 
-## 🎯 Properties
+### 🎯 Properties
 
 | Property | Type | Default | Description |
 |---|---|---|---|
@@ -88,7 +95,7 @@ const styles = StyleSheet.create({
 | iconRight | `JSX.Element` | `<Icon name="chevron-down" size={18} color={"#888"} />` | Icon right of search input when dropdown is closed |
 
 
-## 🪄 Style
+### 🪄 Style
 
 | Property | Type | Default | Description |
 |---|---|---|---|
