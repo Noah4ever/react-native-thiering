@@ -27,7 +27,7 @@ npm i react-native-thiering
 ```
 ## ✍ Usage
 ### 💻 Code
-Let's build the preview!
+Let's build the preview! (You can find the full code below)
 #### Import the Dropdown:
 ```javascript
 import { Dropdown } from "react-native-thiering";
@@ -62,7 +62,7 @@ const list = [
   list={list}
 />
 ```
-#### Make it your dropdown:
+#### Make it ✨your✨ dropdown:
 ```javascript
  <Dropdown
    list={list}
