@@ -60,6 +60,8 @@ const list = [
 ```javascript
 <Dropdown
   list={list}
+  defaultValue={selected.value}
+  onChange={setSelected}
 />
 ```
 #### Make it ✨your✨ dropdown:
