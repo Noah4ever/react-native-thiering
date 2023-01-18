@@ -4,10 +4,10 @@
 # 👉🏻 Dropdown
 
 ## 🔍 Preview
-![image](https://user-images.githubusercontent.com/66632359/213036808-c854f6fb-f7fb-49a4-b06f-131050c563e0.png)
-![image](https://user-images.githubusercontent.com/66632359/213036837-bb7cbefb-c99d-45c7-9f3e-de9bd945c959.png)
-![image](https://user-images.githubusercontent.com/66632359/213036957-f58bbefa-b49b-429a-8d1e-a6be49c336c8.png)
-![image](https://user-images.githubusercontent.com/66632359/213037081-b5a0ec0f-05db-4679-8e1a-f2615408211d.png)
+|   |   | 
+|---|---|
+| ![image](https://user-images.githubusercontent.com/66632359/213036808-c854f6fb-f7fb-49a4-b06f-131050c563e0.png) | ![image](https://user-images.githubusercontent.com/66632359/213036837-bb7cbefb-c99d-45c7-9f3e-de9bd945c959.png) | 
+| ![image](https://user-images.githubusercontent.com/66632359/213036957-f58bbefa-b49b-429a-8d1e-a6be49c336c8.png) | ![image](https://user-images.githubusercontent.com/66632359/213037081-b5a0ec0f-05db-4679-8e1a-f2615408211d.png) | 
 
 ## 💾 Installation
 ```sh
