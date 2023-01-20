@@ -4,6 +4,7 @@
 | <a href="https://www.npmjs.com/package/react-native-thiering">![NPM WEEKLY DOWNLOADS](https://img.shields.io/npm/dw/react-native-thiering?color=%232CA215&label=WEEKLY%20DOWNLOADS&style=for-the-badge)</a> | <a href="https://github.com/noah4ever/react-native-thiering/stargazers">![GITHUB STAR](https://img.shields.io/github/stars/noah4ever/react-native-thiering?label=Give%20Us%20A%20Star&style=for-the-badge)</a> | <a href="https://www.npmjs.com/package/react-native-thiering">![NPM LIFETIME DOWNLOADS](https://img.shields.io/npm/dt/react-native-thiering?color=%232CA215&style=for-the-badge)</a> | 
 
 
+<p align="center">Feel free to contribute to this project</p>
 <h1 align="center"> 📦 React Native Thiering 📦</h1>
 <p align="center">Bundle of useful and beautiful customizable components</p>
 
